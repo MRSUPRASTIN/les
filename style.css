@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #efe4c8;
+  background:
+    radial-gradient(ellipse at 50% 20%, #2e5b3a 0%, #1c3a28 40%, #0b1f16 100%);
+  position: relative;
+}
+
+/* ---------- Луна ---------- */
+.moon {
+  position: fixed;
+  top: 7vh;
+  right: 10vw;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fdf6d8 0%, #f3e5a8 60%, #d8c481 100%);
+  box-shadow: 0 0 60px 25px rgba(253, 246, 216, 0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- Деревья-силуэты ---------- */
+.trees {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45vh;
+  z-index: 0;
+  opacity: 0.55;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  pointer-events: none;
+}
+
+.trees-back {
+  background-image:
+    radial-gradient(ellipse 40% 100% at 50% 100%, #0e2419 0%, rgba(14, 36, 25, 0) 70%),
+    radial-gradient(ellipse 30% 90% at 15% 100%, #0e2419 0%, transparent 70%),
+    radial-gradient(ellipse 30% 90% at 85% 100%, #0e2419 0%, transparent 70%);
+  background-size: 22% 100%, 30% 100%, 30% 100%;
+}
+
+.trees-front {
+  background-image:
+    radial-gradient(ellipse 45% 100% at 50% 100%, #06130d 0%, transparent 70%),
+    radial-gradient(ellipse 35% 100% at 5% 100%, #06130d 0%, transparent 70%),
+    radial-gradient(ellipse 35% 100% at 95% 100%, #06130d 0%, transparent 70%);
+  background-size: 24% 90%, 34% 100%, 34% 100%;
+  opacity: 0.8;
+}
+
+/* ---------- Страница ---------- */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6vh 16px 10vh;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(28px, 5vw, 56px);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(214, 240, 180, 0.25);
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #f7efcf 0%, #cbb98a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: clamp(14px, 2.4vw, 19px);
+  color: #b9cca2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Рамка под видео ---------- */
+.video-frame {
+  margin-top: 5vh;
+  position: relative;
+  display: inline-block;
+  padding: 14px;
+  border-radius: 18px;
+  background:
+    repeating-linear-gradient(90deg, #4a2f18 0 8px, #5d3b20 8px 10px),
+    repeating-linear-gradient(90deg, #3a2513 0 8px, #4a2f18 8px 10px);
+  background-size: 100% 10px, 100% 100%;
+  border: 3px solid #6b4423;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.65),
+    0 0 45px rgba(120, 200, 120, 0.15),
+    inset 0 0 0 1px rgba(255, 220, 150, 0.25);
+  max-width: min(92vw, 900px);
+  width: 100%;
+}
+
+.video-frame::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 14px;
+  border: 2px solid rgba(200, 160, 80, 0.25);
+  pointer-events: none;
+}
+
+video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: #000;
+  outline: none;
+}
+
+.sparkle-note {
+  margin-top: 32px;
+  font-size: 22px;
+  color: rgba(232, 226, 180, 0.75);
+  letter-spacing: 14px;
+  animation: sparkle 3.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Светлячки (canvas) ---------- */
+#fireflies {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
