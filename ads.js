@@ -45,15 +45,20 @@ atOptions = {
     },
     footer: {
       enabled: true,
-      // Adsterra: трекер z1w1s7pte?key=073094173c63ad5ffbe5045aacf9e3a1 (используется скриптами ниже)
+      // Tracker (внутренний, сам по себе не отображается):
+      // https://eliminatedfertilizer.com/z1w1s7pte?key=073094173c63ad5ffbe5045aacf9e3a1
       code: `
-<script src="https://eliminatedfertilizer.com/0a/a5/fa/0aa5fa24c4a9c0d51ef43769ae126c18.js"><\/script>
-<script src="https://eliminatedfertilizer.com/99/ec/ba/99ecbae85e843087a955ef5d8d11366d.js"><\/script>`
+<script src="https://eliminatedfertilizer.com/0a/a5/fa/0aa5fa24c4a9c0d51ef43769ae126c18.js"><\/script>`
     }
   },
 
   init: function () {
     var self = this;
+    var kept = window.localStorage && window.localStorage.getItem("les_consent");
+
+    // Без согласия на cookies реклама не запускается (требование сетей).
+    if (!kept) return self._showConsent();
+
     document.querySelectorAll("[data-ad-slot]").forEach(function (el) {
       var key = el.getAttribute("data-ad-slot");
       var cfg = self.slots[key];
@@ -70,6 +75,27 @@ atOptions = {
           '<div class="ad-placeholder">Реклама<span>Подключите код в ads.js</span></div>';
       }
       el.appendChild(holder);
+    });
+  },
+
+  // Простая cookie-плашка (GDPR). Работает и без рекламы.
+  _showConsent: function () {
+    var existing = document.querySelector(".cookie-consent");
+    if (existing) return;
+    var bar = document.createElement("div");
+    bar.className = "cookie-consent";
+    bar.innerHTML =
+      '<p>Мы используем файлы cookies для показа рекламы. Подробнее — в ' +
+      '<a href="privacy.html" id="cookie-privacy-link">политике конфиденциальности</a>.</p>' +
+      '<button id="cookie-accept">Понятно, можно</button>';
+    document.body.appendChild(bar);
+
+    document.getElementById("cookie-accept").addEventListener("click", function () {
+      try {
+        window.localStorage.setItem("les_consent", "1");
+      } catch (e) {}
+      bar.parentNode.removeChild(bar);
+      window.ADS.init();
     });
   },
 

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ads.js
+
+Sitemap: https://mrsuprastin.github.io/les/sitemap.xml
