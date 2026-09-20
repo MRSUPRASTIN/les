@@ -15,6 +15,8 @@
     <h1 class="title">Сказка о волшебном лесе</h1>
     <p class="subtitle">Зайди в дремучий лес — там живёт чудо…</p>
 
+    <div class="ad-slot" data-ad-slot="top"></div>
+
     <div class="video-frame">
       <video id="forestVideo" controls playsinline preload="auto">
         <source src="Сказка о волшебном лесе.mp4" type="video/mp4">
@@ -22,11 +24,14 @@
       </video>
     </div>
 
+    <div class="ad-slot" data-ad-slot="afterVideo"></div>
+
     <div class="sparkle-note">✦ ✦ ✦</div>
 
     <section class="gallery-section">
       <h2 class="gallery-title">Картинки из леса</h2>
       <div class="gallery" id="gallery"></div>
+      <div class="ad-slot" data-ad-slot="footer"></div>
     </section>
   </div>
 
@@ -36,6 +41,7 @@
   <div class="moon"></div>
 
   <script src="gallery.js"></script>
+  <script src="ads.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
