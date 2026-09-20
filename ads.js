@@ -45,7 +45,10 @@ atOptions = {
     },
     footer: {
       enabled: true,
-      code: ""
+      // Adsterra: трекер z1w1s7pte?key=073094173c63ad5ffbe5045aacf9e3a1 (используется скриптами ниже)
+      code: `
+<script src="https://eliminatedfertilizer.com/0a/a5/fa/0aa5fa24c4a9c0d51ef43769ae126c18.js"><\/script>
+<script src="https://eliminatedfertilizer.com/99/ec/ba/99ecbae85e843087a955ef5d8d11366d.js"><\/script>`
     }
   },
 
