@@ -38,7 +38,10 @@ atOptions = {
     },
     afterVideo: {
       enabled: true,
-      code: ""
+      // Adsterra баннер с контейнером
+      code: `
+<script async="async" data-cfasync="false" src="https://eliminatedfertilizer.com/e1cfd2b12d559cd8001939b3512c9dd1/invoke.js"><\/script>
+<div id="container-e1cfd2b12d559cd8001939b3512c9dd1"></div>`
     },
     footer: {
       enabled: true,
