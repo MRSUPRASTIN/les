@@ -71,4 +71,50 @@
     if (video.paused) video.play();
     else video.pause();
   });
+
+  // ---------- Галерея ----------
+  const gallery = document.getElementById("gallery");
+  if (gallery && window.PHOTOS && window.PHOTOS.length) {
+    window.PHOTOS.forEach(function (src) {
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = src;
+      img.alt = "Кадр из леса";
+      img.addEventListener("click", function () {
+        openLightbox(src);
+      });
+      gallery.appendChild(img);
+    });
+  }
+
+  const lightbox = document.getElementById("lightbox");
+
+  function openLightbox(src) {
+    lightbox.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Кадр из леса";
+    const btn = document.createElement("button");
+    btn.className = "close";
+    btn.textContent = "\u2715";
+    btn.addEventListener("click", closeLightbox);
+    lightbox.appendChild(img);
+    lightbox.appendChild(btn);
+    lightbox.classList.add("open");
+    document.addEventListener("keydown", onKey);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.innerHTML = "";
+    document.removeEventListener("keydown", onKey);
+  }
+
+  function onKey(e) {
+    if (e.key === "Escape") closeLightbox();
+  }
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
 })();
